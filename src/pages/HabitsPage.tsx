@@ -17,7 +17,7 @@ export default function HabitsPage() {
   const { state, dispatch } = useApp();
   const [showModal, setShowModal] = useState(false);
   const [habitName, setHabitName] = useState('');
-  const [habitColor, setHabitColor] = useState(SUBJECT_COLORS[0]);
+  const [habitColor, setHabitColor] = useState<string>(SUBJECT_COLORS[0]);
 
   const today = format(new Date(), 'yyyy-MM-dd');
 

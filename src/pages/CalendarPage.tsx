@@ -30,7 +30,7 @@ export default function CalendarPage() {
   const [time, setTime] = useState('');
   const [endTime, setEndTime] = useState('');
   const [eventType, setEventType] = useState<EventType>('study');
-  const [color, setColor] = useState('#4F8CFF');
+  const [color, setColor] = useState<string>('#4F8CFF');
   const [description, setDescription] = useState('');
 
   const eventTypeColors: Record<EventType, string> = {

@@ -5,11 +5,13 @@ interface CardProps {
   className?: string;
   hover?: boolean;
   padding?: 'sm' | 'md' | 'lg' | 'none';
+  onClick?: () => void;
 }
 
-export default function Card({ children, className, hover = false, padding = 'md' }: CardProps) {
+export default function Card({ children, className, hover = false, padding = 'md', onClick }: CardProps) {
   return (
     <div
+      onClick={onClick}
       className={cn(
         'bg-bg-card border border-border rounded-2xl',
         hover && 'transition-all duration-200 hover:border-border-hover hover:shadow-card-hover cursor-pointer',

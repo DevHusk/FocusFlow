@@ -28,7 +28,7 @@ export default function StudyPlannerPage() {
 
   // Subject form
   const [subjectName, setSubjectName] = useState('');
-  const [subjectColor, setSubjectColor] = useState(SUBJECT_COLORS[0]);
+  const [subjectColor, setSubjectColor] = useState<string>(SUBJECT_COLORS[0]);
   const [subjectPriority, setSubjectPriority] = useState<'low' | 'medium' | 'high'>('medium');
   const [subjectTargetHours, setSubjectTargetHours] = useState(40);
 
@@ -298,7 +298,7 @@ export default function StudyPlannerPage() {
                   key={color}
                   onClick={() => setSubjectColor(color)}
                   className={cn('w-8 h-8 rounded-lg transition-all', subjectColor === color && 'ring-2 ring-offset-2 ring-offset-bg-card')}
-                  style={{ backgroundColor: color, ringColor: color }}
+                  style={{ backgroundColor: color, '--tw-ring-color': color } as React.CSSProperties}
                 />
               ))}
             </div>
