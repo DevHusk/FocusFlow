@@ -91,7 +91,7 @@ export default function AnalyticsPage() {
     return data;
   }, [dailyStudy]);
 
-  const heatmapColors = ['#141A26', '#4F8CFF20', '#4F8CFF40', '#4F8CFF80', '#4F8CFF'];
+  const heatmapColors = ['#141A26', '#00E5C720', '#00E5C740', '#00E5C780', '#00E5C7'];
 
   // ─── Stats ───────────────────────────────────────────────────
   const totalMinutes = dailyStudy.reduce((a, s) => a + s.minutes, 0);
@@ -100,16 +100,16 @@ export default function AnalyticsPage() {
   const taskCompletion = tasks.length > 0 ? Math.round((tasks.filter(t => t.completed).length / tasks.length) * 100) : 0;
 
   const statCards = [
-    { icon: Clock, label: 'Total Study', value: formatMinutes(totalMinutes), color: '#4F8CFF' },
-    { icon: Target, label: 'Sessions', value: String(totalSessions), color: '#7C5CFF' },
-    { icon: TrendingUp, label: 'Daily Average', value: formatMinutes(avgDailyMinutes), color: '#22C55E' },
-    { icon: Award, label: 'Task Completion', value: `${taskCompletion}%`, color: '#F59E0B' },
+    { icon: Clock, label: 'Total Study', value: formatMinutes(totalMinutes), color: '#00E5C7' },
+    { icon: Target, label: 'Sessions', value: String(totalSessions), color: '#D946EF' },
+    { icon: TrendingUp, label: 'Daily Average', value: formatMinutes(avgDailyMinutes), color: '#34D399' },
+    { icon: Award, label: 'Task Completion', value: `${taskCompletion}%`, color: '#FBBF24' },
   ];
 
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-text">Analytics</h1>
+        <h1 className="text-2xl font-display font-bold text-text">Analytics</h1>
         <p className="text-sm text-text-secondary mt-1">Track your study patterns and progress</p>
       </div>
 
@@ -123,7 +123,7 @@ export default function AnalyticsPage() {
                   <stat.icon size={20} style={{ color: stat.color }} />
                 </div>
                 <div>
-                  <p className="text-xl font-bold text-text">{stat.value}</p>
+                  <p className="text-xl font-display font-bold text-text">{stat.value}</p>
                   <p className="text-xs text-text-tertiary">{stat.label}</p>
                 </div>
               </div>
@@ -141,14 +141,14 @@ export default function AnalyticsPage() {
               <AreaChart data={dailyData}>
                 <defs>
                   <linearGradient id="dailyGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#4F8CFF" stopOpacity={0.3} />
-                    <stop offset="95%" stopColor="#4F8CFF" stopOpacity={0} />
+                    <stop offset="5%" stopColor="#00E5C7" stopOpacity={0.3} />
+                    <stop offset="95%" stopColor="#00E5C7" stopOpacity={0} />
                   </linearGradient>
                 </defs>
                 <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fill: '#64748B', fontSize: 10 }} interval={4} />
                 <YAxis axisLine={false} tickLine={false} tick={{ fill: '#64748B', fontSize: 10 }} tickFormatter={v => `${v}m`} />
                 <Tooltip contentStyle={{ backgroundColor: '#141A26', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 12, fontSize: 12 }} />
-                <Area type="monotone" dataKey="minutes" stroke="#4F8CFF" strokeWidth={2} fill="url(#dailyGrad)" />
+                <Area type="monotone" dataKey="minutes" stroke="#00E5C7" strokeWidth={2} fill="url(#dailyGrad)" />
               </AreaChart>
             </ResponsiveContainer>
           </div>
@@ -163,7 +163,7 @@ export default function AnalyticsPage() {
                 <XAxis dataKey="week" axisLine={false} tickLine={false} tick={{ fill: '#64748B', fontSize: 10 }} interval={1} />
                 <YAxis axisLine={false} tickLine={false} tick={{ fill: '#64748B', fontSize: 10 }} tickFormatter={v => `${v}m`} />
                 <Tooltip contentStyle={{ backgroundColor: '#141A26', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 12, fontSize: 12 }} />
-                <Bar dataKey="minutes" fill="#7C5CFF" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="minutes" fill="#D946EF" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -178,7 +178,7 @@ export default function AnalyticsPage() {
                 <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fill: '#64748B', fontSize: 12 }} />
                 <YAxis axisLine={false} tickLine={false} tick={{ fill: '#64748B', fontSize: 10 }} tickFormatter={v => `${v}m`} />
                 <Tooltip contentStyle={{ backgroundColor: '#141A26', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 12, fontSize: 12 }} />
-                <Bar dataKey="minutes" fill="#22C55E" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="minutes" fill="#34D399" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -216,7 +216,7 @@ export default function AnalyticsPage() {
               <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fill: '#64748B', fontSize: 12 }} />
               <YAxis axisLine={false} tickLine={false} tick={{ fill: '#64748B', fontSize: 12 }} allowDecimals={false} />
               <Tooltip contentStyle={{ backgroundColor: '#141A26', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 12, fontSize: 12 }} />
-              <Bar dataKey="sessions" fill="#F59E0B" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="sessions" fill="#FBBF24" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -253,7 +253,7 @@ export default function AnalyticsPage() {
           <h2 className="text-base font-semibold text-text">Current Streak</h2>
         </div>
         <div className="text-center py-4">
-          <p className="text-5xl font-bold gradient-text">
+          <p className="text-5xl font-display font-bold gradient-text">
             {(() => {
               let streak = 0;
               const sorted = [...dailyStudy].sort((a, b) => b.date.localeCompare(a.date));

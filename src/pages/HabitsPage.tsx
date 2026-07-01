@@ -107,7 +107,7 @@ export default function HabitsPage() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-text">Habit Tracker</h1>
+          <h1 className="text-2xl font-display font-bold text-text">Habit Tracker</h1>
           <p className="text-sm text-text-secondary mt-1">Build consistent daily habits</p>
         </div>
         <Button onClick={() => setShowModal(true)}>
@@ -123,7 +123,7 @@ export default function HabitsPage() {
               <Target size={20} className="text-primary" />
             </div>
             <div>
-              <p className="text-xl font-bold text-text">{state.habits.length}</p>
+              <p className="text-xl font-display font-bold text-text">{state.habits.length}</p>
               <p className="text-xs text-text-tertiary">Active Habits</p>
             </div>
           </div>
@@ -134,7 +134,7 @@ export default function HabitsPage() {
               <CheckCircle2 size={20} className="text-success" />
             </div>
             <div>
-              <p className="text-xl font-bold text-text">{monthlyRate}%</p>
+              <p className="text-xl font-display font-bold text-text">{monthlyRate}%</p>
               <p className="text-xs text-text-tertiary">Monthly Rate</p>
             </div>
           </div>
@@ -145,7 +145,7 @@ export default function HabitsPage() {
               <Flame size={20} className="text-warning" />
             </div>
             <div>
-              <p className="text-xl font-bold text-text">{longestStreak}</p>
+              <p className="text-xl font-display font-bold text-text">{longestStreak}</p>
               <p className="text-xs text-text-tertiary">Longest Streak</p>
             </div>
           </div>
@@ -156,7 +156,7 @@ export default function HabitsPage() {
               <TrendingUp size={20} className="text-accent" />
             </div>
             <div>
-              <p className="text-xl font-bold text-text">
+              <p className="text-xl font-display font-bold text-text">
                 {state.habits.filter(h => h.completedDates.includes(today)).length}/{state.habits.length}
               </p>
               <p className="text-xs text-text-tertiary">Done Today</p>
@@ -178,7 +178,7 @@ export default function HabitsPage() {
                   contentStyle={{ backgroundColor: '#141A26', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 12, fontSize: 12 }}
                   labelStyle={{ color: '#94A3B8' }}
                 />
-                <Bar dataKey="count" fill="#7C5CFF" radius={[6, 6, 0, 0]} />
+                <Bar dataKey="count" fill="#D946EF" radius={[6, 6, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>

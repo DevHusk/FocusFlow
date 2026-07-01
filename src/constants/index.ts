@@ -1,17 +1,19 @@
 export const COLORS = {
-  primary: '#4F8CFF',
-  accent: '#7C5CFF',
-  success: '#22C55E',
-  warning: '#F59E0B',
-  danger: '#EF4444',
-  bg: '#0B0F19',
-  card: '#141A26',
+  primary: '#00E5C7',
+  accent: '#D946EF',
+  auroraPurple: '#8B5CF6',
+  auroraBlue: '#3B82F6',
+  success: '#34D399',
+  warning: '#FBBF24',
+  danger: '#FB7185',
+  bg: '#06080F',
+  card: '#0C101C',
 } as const;
 
 export const SUBJECT_COLORS = [
-  '#4F8CFF', '#7C5CFF', '#22C55E', '#F59E0B', '#EF4444',
-  '#EC4899', '#8B5CF6', '#06B6D4', '#F97316', '#14B8A6',
-  '#E879F9', '#FB923C', '#38BDF8', '#A3E635', '#F43F5E',
+  '#00E5C7', '#D946EF', '#8B5CF6', '#3B82F6', '#F43F5E',
+  '#34D399', '#FBBF24', '#FB923C', '#38BDF8', '#A78BFA',
+  '#F472B6', '#2DD4BF', '#818CF8', '#FB7185', '#FCD34D',
 ] as const;
 
 export const POMODORO_PRESETS = {
@@ -64,7 +66,7 @@ export const AMBIENT_SOUNDS = [
 
 export const DEFAULT_SETTINGS = {
   theme: 'dark' as const,
-  accentColor: '#4F8CFF',
+  accentColor: '#00E5C7',
   pomodoro: {
     preset: '25/5' as const,
     focusMinutes: 25,

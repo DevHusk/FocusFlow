@@ -132,17 +132,17 @@ export default function TasksPage() {
   };
 
   const priorityColors: Record<string, string> = {
-    urgent: '#EF4444',
-    high: '#F59E0B',
-    medium: '#4F8CFF',
-    low: '#22C55E',
+    urgent: '#FB7185',
+    high: '#FBBF24',
+    medium: '#00E5C7',
+    low: '#34D399',
   };
 
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-text">Tasks</h1>
+          <h1 className="text-2xl font-display font-bold text-text">Tasks</h1>
           <p className="text-sm text-text-secondary mt-1">
             {completedCount}/{totalCount} tasks completed ({progressPct}%)
           </p>
@@ -154,7 +154,7 @@ export default function TasksPage() {
 
       {/* Progress bar */}
       <Card padding="sm">
-        <div className="h-2 bg-bg-elevated rounded-full overflow-hidden">
+        <div className="h-2 bg-card rounded-full overflow-hidden">
           <div
             className="h-full bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-500"
             style={{ width: `${progressPct}%` }}
@@ -290,7 +290,7 @@ export default function TasksPage() {
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Add more details..."
               rows={3}
-              className="w-full px-3 py-2.5 bg-bg-elevated border border-border rounded-xl text-sm text-text placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all resize-none"
+              className="w-full px-3 py-2.5 bg-card border border-white/[0.06] rounded-xl text-sm text-text placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-primary/[0.3] focus:border-primary/[0.15] transition-all resize-none"
             />
           </div>
           <div className="grid grid-cols-2 gap-4">

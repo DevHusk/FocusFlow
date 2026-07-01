@@ -45,7 +45,7 @@ export default function Sidebar({ mobile = false, onClose }: SidebarProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden"
           onClick={onClose}
         />
       )}
@@ -57,7 +57,7 @@ export default function Sidebar({ mobile = false, onClose }: SidebarProps) {
         }}
         transition={{ duration: 0.2, ease: 'easeInOut' }}
         className={cn(
-          'fixed top-0 left-0 h-screen bg-bg-card border-r border-border z-50',
+          'fixed top-0 left-0 h-screen glass-strong z-50',
           'flex flex-col',
           mobile ? 'w-[260px]' : '',
           focusMode && !mobile ? 'hidden' : '',
@@ -65,27 +65,27 @@ export default function Sidebar({ mobile = false, onClose }: SidebarProps) {
         )}
       >
         {/* Header */}
-        <div className="h-16 flex items-center justify-between px-4 border-b border-border">
+        <div className="h-16 flex items-center justify-between px-4 border-b border-white/[0.04]">
           {!collapsed && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               className="flex items-center gap-2.5"
             >
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                <Brain size={18} className="text-white" />
+              <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-glow">
+                <Brain size={18} className="text-bg" />
               </div>
-              <span className="text-base font-bold text-text tracking-tight">FocusFlow</span>
+              <span className="text-base font-display font-bold text-text tracking-tight">FocusFlow</span>
             </motion.div>
           )}
           {mobile ? (
-            <button onClick={onClose} className="p-1.5 rounded-lg hover:bg-bg-elevated text-text-secondary">
+            <button onClick={onClose} className="p-1.5 rounded-xl hover:bg-white/[0.05] text-text-secondary">
               <X size={18} />
             </button>
           ) : (
             <button
               onClick={() => dispatch({ type: 'TOGGLE_SIDEBAR' })}
-              className="p-1.5 rounded-lg hover:bg-bg-elevated text-text-secondary"
+              className="p-1.5 rounded-xl hover:bg-white/[0.05] text-text-secondary"
             >
               <ChevronLeft size={16} className={cn('transition-transform', collapsed && 'rotate-180')} />
             </button>
@@ -94,30 +94,30 @@ export default function Sidebar({ mobile = false, onClose }: SidebarProps) {
 
         {/* XP / Level card */}
         {!collapsed && (
-          <div className="mx-3 mt-3 p-3 rounded-xl bg-bg-elevated border border-border">
+          <div className="mx-3 mt-3 p-3 rounded-xl glass-light">
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
-                <div className="w-7 h-7 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                  <Zap size={14} className="text-white" />
+                <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
+                  <Zap size={14} className="text-bg" />
                 </div>
                 <span className="text-xs font-semibold text-text">Level {user?.level ?? 1}</span>
               </div>
-              <span className="text-xs text-text-tertiary">{user?.xp ?? 0} XP</span>
+              <span className="text-xs text-text-tertiary font-mono">{user?.xp ?? 0} XP</span>
             </div>
             <ProgressBar
               value={getLevelProgress(user?.xp ?? 0)}
               size="sm"
-              color="#7C5CFF"
+              color="aurora"
             />
           </div>
         )}
 
         {/* Daily stat */}
         {!collapsed && (
-          <div className="mx-3 mt-2 px-3 py-2 rounded-xl bg-primary/5 border border-primary/10">
+          <div className="mx-3 mt-2 px-3 py-2 rounded-xl bg-primary/[0.06] border border-primary/[0.08]">
             <div className="flex items-center justify-between">
               <span className="text-xs text-text-secondary">Today</span>
-              <span className="text-xs font-semibold text-primary">{formatMinutes(todayMinutes)}</span>
+              <span className="text-xs font-semibold text-primary font-mono">{formatMinutes(todayMinutes)}</span>
             </div>
           </div>
         )}
@@ -132,8 +132,8 @@ export default function Sidebar({ mobile = false, onClose }: SidebarProps) {
               className={({ isActive }) => cn(
                 'flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-150',
                 isActive
-                  ? 'bg-primary/10 text-primary'
-                  : 'text-text-secondary hover:text-text hover:bg-bg-elevated',
+                  ? 'bg-primary/[0.1] text-primary border border-primary/[0.08]'
+                  : 'text-text-secondary hover:text-text hover:bg-white/[0.04] border border-transparent',
                 collapsed && 'justify-center px-0'
               )}
             >
@@ -144,12 +144,12 @@ export default function Sidebar({ mobile = false, onClose }: SidebarProps) {
         </nav>
 
         {/* Settings + Focus Mode */}
-        <div className="px-2 pb-3 space-y-0.5 border-t border-border pt-2">
+        <div className="px-2 pb-3 space-y-0.5 border-t border-white/[0.04] pt-2">
           <button
             onClick={() => dispatch({ type: 'SET_FOCUS_MODE', payload: true })}
             className={cn(
               'flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium w-full transition-all',
-              'text-text-secondary hover:text-accent hover:bg-accent/10',
+              'text-text-secondary hover:text-accent hover:bg-accent/[0.08] border border-transparent hover:border-accent/[0.1]',
               collapsed && 'justify-center px-0'
             )}
           >
@@ -160,7 +160,7 @@ export default function Sidebar({ mobile = false, onClose }: SidebarProps) {
             to="/settings"
             className={({ isActive }) => cn(
               'flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all',
-              isActive ? 'bg-primary/10 text-primary' : 'text-text-secondary hover:text-text hover:bg-bg-elevated',
+              isActive ? 'bg-primary/[0.1] text-primary border border-primary/[0.08]' : 'text-text-secondary hover:text-text hover:bg-white/[0.04] border border-transparent',
               collapsed && 'justify-center px-0'
             )}
           >

@@ -30,15 +30,15 @@ export default function CalendarPage() {
   const [time, setTime] = useState('');
   const [endTime, setEndTime] = useState('');
   const [eventType, setEventType] = useState<EventType>('study');
-  const [color, setColor] = useState<string>('#4F8CFF');
+  const [color, setColor] = useState<string>('#00E5C7');
   const [description, setDescription] = useState('');
 
   const eventTypeColors: Record<EventType, string> = {
-    exam: '#EF4444',
-    assignment: '#F59E0B',
-    study: '#4F8CFF',
-    event: '#7C5CFF',
-    deadline: '#EC4899',
+    exam: '#FB7185',
+    assignment: '#FBBF24',
+    study: '#00E5C7',
+    event: '#D946EF',
+    deadline: '#D946EF',
   };
 
   // Build calendar grid
@@ -93,11 +93,11 @@ export default function CalendarPage() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-text">Calendar</h1>
+          <h1 className="text-2xl font-display font-bold text-text">Calendar</h1>
           <p className="text-sm text-text-secondary mt-1">Manage your study schedule and deadlines</p>
         </div>
         <div className="flex items-center gap-2">
-          <div className="flex bg-bg-card border border-border rounded-xl overflow-hidden">
+          <div className="flex bg-card border border-white/[0.06] rounded-xl overflow-hidden">
             <button onClick={() => setViewMode('month')}
               className={cn('px-3 py-1.5 text-sm font-medium transition-colors', viewMode === 'month' ? 'bg-primary text-white' : 'text-text-secondary hover:text-text')}>
               Month
@@ -116,18 +116,18 @@ export default function CalendarPage() {
           {viewMode === 'month' ? (
             <Card padding="none">
               {/* Month header */}
-              <div className="flex items-center justify-between px-5 py-4 border-b border-border">
-                <button onClick={() => setCurrentMonth(subMonths(currentMonth, 1))} className="p-1.5 rounded-lg hover:bg-bg-elevated text-text-secondary">
+              <div className="flex items-center justify-between px-5 py-4 border-b border-white/[0.06]">
+                <button onClick={() => setCurrentMonth(subMonths(currentMonth, 1))} className="p-1.5 rounded-lg hover:bg-card text-text-secondary">
                   <ChevronLeft size={18} />
                 </button>
                 <h2 className="text-base font-semibold text-text">{format(currentMonth, 'MMMM yyyy')}</h2>
-                <button onClick={() => setCurrentMonth(addMonths(currentMonth, 1))} className="p-1.5 rounded-lg hover:bg-bg-elevated text-text-secondary">
+                <button onClick={() => setCurrentMonth(addMonths(currentMonth, 1))} className="p-1.5 rounded-lg hover:bg-card text-text-secondary">
                   <ChevronRight size={18} />
                 </button>
               </div>
 
               {/* Day names */}
-              <div className="grid grid-cols-7 border-b border-border">
+              <div className="grid grid-cols-7 border-b border-white/[0.06]">
                 {dayNames.map(d => (
                   <div key={d} className="text-center text-xs font-medium text-text-tertiary py-2">{d}</div>
                 ))}
@@ -146,7 +146,7 @@ export default function CalendarPage() {
                       key={i}
                       onClick={() => setSelectedDate(day)}
                       className={cn(
-                        'relative min-h-[80px] sm:min-h-[100px] p-1.5 border-b border-r border-border text-left transition-colors hover:bg-bg-elevated',
+                        'relative min-h-[80px] sm:min-h-[100px] p-1.5 border-b border-r border-white/[0.06] text-left transition-colors hover:bg-card',
                         !isCurrentMonth && 'opacity-30',
                         isSelected && 'bg-primary/5',
                       )}
@@ -225,7 +225,7 @@ export default function CalendarPage() {
             ) : (
               <div className="space-y-2">
                 {selectedEvents.map(event => (
-                  <div key={event.id} className="p-2.5 rounded-xl bg-bg-elevated border border-border">
+                  <div key={event.id} className="p-2.5 rounded-xl bg-card border border-white/[0.06]">
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 rounded-full" style={{ backgroundColor: event.color }} />
                       <span className="text-sm font-medium text-text">{event.title}</span>
@@ -294,7 +294,7 @@ export default function CalendarPage() {
           <div>
             <label className="block text-sm font-medium text-text-secondary mb-1.5">Description</label>
             <textarea value={description} onChange={e => setDescription(e.target.value)} rows={2}
-              className="w-full px-3 py-2.5 bg-bg-elevated border border-border rounded-xl text-sm text-text placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-primary/30 resize-none" />
+              className="w-full px-3 py-2.5 bg-card border border-white/[0.06] rounded-xl text-sm text-text placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-primary/[0.3] resize-none" />
           </div>
           <div className="flex gap-3 pt-2">
             <Button variant="secondary" onClick={() => setShowModal(false)} className="flex-1">Cancel</Button>

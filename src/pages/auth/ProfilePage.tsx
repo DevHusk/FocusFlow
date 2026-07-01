@@ -1,29 +1,32 @@
 import { motion } from 'framer-motion';
 import { Camera, Save, User, Mail, BookOpen, Target } from 'lucide-react';
 import { useApp } from '@/context/AppContext';
-import Card from '@/components/ui/Card';
 
 export default function ProfilePage() {
   const { state } = useApp();
   const { user } = state;
 
   return (
-    <div className="min-h-screen bg-bg flex items-center justify-center px-4 py-12">
+    <div className="min-h-screen bg-bg flex items-center justify-center px-4 py-12 relative overflow-hidden">
+      <div className="aurora-bg" />
+      <div className="orb orb-teal w-[300px] h-[300px] -top-20 -left-20 animate-aurora-drift" />
+      <div className="orb orb-pink w-[250px] h-[250px] -bottom-16 -right-16 animate-aurora-drift-2" />
+
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="w-full max-w-lg"
+        className="w-full max-w-lg relative z-10"
       >
-        <h1 className="text-2xl font-bold text-text mb-6 text-center">Your Profile</h1>
+        <h1 className="text-2xl font-display font-bold text-text mb-6 text-center">Your Profile</h1>
 
-        <Card className="p-6">
+        <div className="glass-card rounded-2xl p-6">
           {/* Avatar */}
           <div className="flex items-center gap-4 mb-8">
             <div className="relative">
-              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white text-2xl font-bold">
+              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center text-bg text-2xl font-bold shadow-glow">
                 {user?.name?.[0] ?? 'S'}
               </div>
-              <button className="absolute -bottom-1 -right-1 w-8 h-8 rounded-lg bg-bg-card border border-border flex items-center justify-center text-text-secondary hover:text-text transition-colors">
+              <button className="absolute -bottom-1 -right-1 w-8 h-8 rounded-lg glass-light border border-white/[0.08] flex items-center justify-center text-text-secondary hover:text-text transition-colors">
                 <Camera size={14} />
               </button>
             </div>
@@ -35,16 +38,16 @@ export default function ProfilePage() {
 
           {/* Stats */}
           <div className="grid grid-cols-3 gap-3 mb-8">
-            <div className="p-3 rounded-xl bg-bg-elevated border border-border text-center">
-              <p className="text-xl font-bold text-primary">{user?.level ?? 1}</p>
+            <div className="p-3 rounded-xl glass-light text-center">
+              <p className="text-xl font-bold text-primary font-mono">{user?.level ?? 1}</p>
               <p className="text-xs text-text-tertiary">Level</p>
             </div>
-            <div className="p-3 rounded-xl bg-bg-elevated border border-border text-center">
-              <p className="text-xl font-bold text-accent">{user?.xp ?? 0}</p>
+            <div className="p-3 rounded-xl glass-light text-center">
+              <p className="text-xl font-bold text-accent font-mono">{user?.xp ?? 0}</p>
               <p className="text-xs text-text-tertiary">XP</p>
             </div>
-            <div className="p-3 rounded-xl bg-bg-elevated border border-border text-center">
-              <p className="text-xl font-bold text-success">{user?.streak ?? 0}</p>
+            <div className="p-3 rounded-xl glass-light text-center">
+              <p className="text-xl font-bold text-success font-mono">{user?.streak ?? 0}</p>
               <p className="text-xs text-text-tertiary">Streak</p>
             </div>
           </div>
@@ -56,7 +59,7 @@ export default function ProfilePage() {
                 <User size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-text-tertiary" />
                 <input
                   defaultValue={user?.name}
-                  className="w-full h-11 pl-10 pr-4 bg-bg-elevated border border-border rounded-xl text-sm text-text focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all"
+                  className="w-full h-11 pl-10 pr-4 glass-light rounded-xl text-sm text-text focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/[0.15] transition-all"
                 />
               </div>
             </div>
@@ -66,7 +69,7 @@ export default function ProfilePage() {
                 <Mail size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-text-tertiary" />
                 <input
                   defaultValue={user?.email}
-                  className="w-full h-11 pl-10 pr-4 bg-bg-elevated border border-border rounded-xl text-sm text-text focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all"
+                  className="w-full h-11 pl-10 pr-4 glass-light rounded-xl text-sm text-text focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/[0.15] transition-all"
                 />
               </div>
             </div>
@@ -78,7 +81,7 @@ export default function ProfilePage() {
                   <input
                     type="number"
                     defaultValue={4}
-                    className="w-full h-11 pl-10 pr-4 bg-bg-elevated border border-border rounded-xl text-sm text-text focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all"
+                    className="w-full h-11 pl-10 pr-4 glass-light rounded-xl text-sm text-text focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/[0.15] transition-all"
                   />
                 </div>
               </div>
@@ -89,18 +92,18 @@ export default function ProfilePage() {
                   <input
                     type="number"
                     defaultValue={30}
-                    className="w-full h-11 pl-10 pr-4 bg-bg-elevated border border-border rounded-xl text-sm text-text focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all"
+                    className="w-full h-11 pl-10 pr-4 glass-light rounded-xl text-sm text-text focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/[0.15] transition-all"
                   />
                 </div>
               </div>
             </div>
 
-            <button className="w-full h-11 bg-primary hover:bg-primary-hover text-white rounded-xl font-medium text-sm transition-all flex items-center justify-center gap-2 shadow-glow">
+            <button className="w-full h-11 bg-gradient-to-r from-primary to-accent hover:shadow-aurora-strong text-bg rounded-xl font-semibold text-sm transition-all flex items-center justify-center gap-2">
               <Save size={16} />
               Save Changes
             </button>
           </form>
-        </Card>
+        </div>
       </motion.div>
     </div>
   );

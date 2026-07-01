@@ -17,9 +17,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-bg',
           'disabled:opacity-50 disabled:cursor-not-allowed',
           // Variants
-          variant === 'primary' && 'bg-primary hover:bg-primary-hover text-white focus:ring-primary/50 shadow-glow hover:shadow-glow',
-          variant === 'secondary' && 'bg-bg-elevated hover:bg-bg-hover text-text-secondary border border-border hover:border-border-hover hover:text-text focus:ring-primary/30',
-          variant === 'ghost' && 'bg-transparent hover:bg-bg-elevated text-text-secondary hover:text-text focus:ring-primary/30',
+          variant === 'primary' && 'bg-gradient-to-r from-primary to-accent text-bg hover:shadow-aurora-strong focus:ring-primary/50 font-semibold',
+          variant === 'secondary' && 'glass-light hover:bg-white/[0.08] text-text-secondary border border-white/[0.06] hover:border-white/[0.1] hover:text-text focus:ring-primary/30',
+          variant === 'ghost' && 'bg-transparent hover:bg-white/[0.05] text-text-secondary hover:text-text focus:ring-primary/30',
           variant === 'danger' && 'bg-danger/10 hover:bg-danger/20 text-danger focus:ring-danger/50',
           variant === 'accent' && 'bg-accent hover:bg-accent-hover text-white focus:ring-accent/50 shadow-glow-accent',
           // Sizes

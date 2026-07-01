@@ -24,11 +24,11 @@ const resourceTypeIcons: Record<ResourceType, React.ElementType> = {
 };
 
 const resourceTypeColors: Record<ResourceType, string> = {
-  pdf: '#EF4444',
+  pdf: '#FB7185',
   youtube: '#FF0000',
-  website: '#4F8CFF',
-  book: '#22C55E',
-  note: '#7C5CFF',
+  website: '#00E5C7',
+  book: '#34D399',
+  note: '#D946EF',
 };
 
 const resourceCategories = ['General', 'Mathematics', 'Science', 'Programming', 'Languages', 'History', 'Literature', 'Other'];
@@ -89,7 +89,7 @@ export default function ResourcesPage() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-text">Resources</h1>
+          <h1 className="text-2xl font-display font-bold text-text">Resources</h1>
           <p className="text-sm text-text-secondary mt-1">Store PDFs, links, books, and reference materials</p>
         </div>
         <Button onClick={() => setShowModal(true)}><Plus size={16} /> Add Resource</Button>
@@ -106,7 +106,7 @@ export default function ResourcesPage() {
           options={[{ value: 'all', label: 'All Categories' }, ...resourceCategories.map(c => ({ value: c, label: c }))]} />
         <button onClick={() => setShowFavoritesOnly(!showFavoritesOnly)}
           className={cn('flex items-center gap-1.5 px-3 py-2.5 rounded-xl text-sm font-medium border transition-all',
-            showFavoritesOnly ? 'border-warning bg-warning/10 text-warning' : 'border-border bg-bg-card text-text-secondary hover:text-text')}>
+            showFavoritesOnly ? 'border-warning bg-warning/10 text-warning' : 'border-white/[0.06] bg-card text-text-secondary hover:text-text')}>
           <Heart size={14} className={showFavoritesOnly ? 'fill-warning' : ''} /> Favorites
         </button>
       </div>
@@ -146,7 +146,7 @@ export default function ResourcesPage() {
                       </a>
                     )}
                     {resource.content && <p className="text-xs text-text-tertiary line-clamp-2 flex-1">{resource.content}</p>}
-                    <div className="flex items-center justify-between mt-3 pt-3 border-t border-border">
+                    <div className="flex items-center justify-between mt-3 pt-3 border-t border-white/[0.06]">
                       <span className="text-xs text-text-muted">{resource.category}</span>
                       <button onClick={() => dispatch({ type: 'DELETE_RESOURCE', payload: resource.id })}
                         className="text-text-muted hover:text-danger transition-colors">
@@ -173,7 +173,7 @@ export default function ResourcesPage() {
           <div>
             <label className="block text-sm font-medium text-text-secondary mb-1.5">Notes</label>
             <textarea value={content} onChange={e => setContent(e.target.value)} rows={3}
-              className="w-full px-3 py-2.5 bg-bg-elevated border border-border rounded-xl text-sm text-text placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-primary/30 resize-none" />
+              className="w-full px-3 py-2.5 bg-card border border-white/[0.06] rounded-xl text-sm text-text placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-primary/[0.3] resize-none" />
           </div>
           <div className="flex gap-3 pt-2">
             <Button variant="secondary" onClick={() => setShowModal(false)} className="flex-1">Cancel</Button>

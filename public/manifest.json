@@ -1,15 +1,15 @@
 {
   "name": "FocusFlow — Study Dashboard",
   "short_name": "FocusFlow",
-  "description": "A premium distraction-free study dashboard for focused students.",
+  "description": "A distraction-free study dashboard with aurora glass design.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0B0F19",
-  "theme_color": "#0B0F19",
+  "background_color": "#06080F",
+  "theme_color": "#06080F",
   "orientation": "any",
   "icons": [
     {
-      "src": "/vite.svg",
+      "src": "/favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml"
     }

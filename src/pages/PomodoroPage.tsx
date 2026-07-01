@@ -38,9 +38,9 @@ export default function PomodoroPage() {
   const strokeDashoffset = circumference - (progress / 100) * circumference;
 
   const modeColors = {
-    focus: '#4F8CFF',
-    shortBreak: '#22C55E',
-    longBreak: '#7C5CFF',
+    focus: '#00E5C7',
+    shortBreak: '#34D399',
+    longBreak: '#D946EF',
   };
 
   const modeLabels = {
@@ -54,7 +54,7 @@ export default function PomodoroPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-text">Pomodoro Timer</h1>
+          <h1 className="text-2xl font-display font-bold text-text">Pomodoro Timer</h1>
           <p className="text-sm text-text-secondary mt-1">Stay focused with timed study sessions</p>
         </div>
         <Button variant="ghost" size="icon" onClick={toggleFullscreen}>
@@ -78,7 +78,7 @@ export default function PomodoroPage() {
                     'px-4 py-2 rounded-xl text-sm font-medium transition-all',
                     mode === m
                       ? 'text-white'
-                      : 'text-text-secondary hover:text-text hover:bg-bg-elevated',
+                      : 'text-text-secondary hover:text-text hover:bg-card',
                   )}
                   style={mode === m ? { backgroundColor: modeColors[m] } : {}}
                 >
@@ -108,7 +108,7 @@ export default function PomodoroPage() {
                 />
               </svg>
               <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <span className="text-5xl font-bold text-text font-mono tracking-wider">
+                <span className="text-5xl font-display font-bold text-text font-mono tracking-wider">
                   {formatTimer(timeLeft)}
                 </span>
                 <span className="text-sm text-text-secondary mt-2">{modeLabels[mode]}</span>
@@ -146,7 +146,7 @@ export default function PomodoroPage() {
                     'w-2.5 h-2.5 rounded-full transition-colors',
                     i < (sessionsCompleted % 4)
                       ? 'bg-primary'
-                      : 'bg-bg-elevated'
+                      : 'bg-card'
                   )}
                 />
               ))}
@@ -171,7 +171,7 @@ export default function PomodoroPage() {
                     'p-2.5 rounded-xl text-sm font-medium border transition-all',
                     selectedPreset === preset
                       ? 'border-primary bg-primary/10 text-primary'
-                      : 'border-border bg-bg-elevated text-text-secondary hover:border-border-hover'
+                      : 'border-white/[0.06] bg-card text-text-secondary hover:border-white/[0.12]'
                   )}
                 >
                   {preset}
@@ -183,7 +183,7 @@ export default function PomodoroPage() {
                   'p-2.5 rounded-xl text-sm font-medium border transition-all',
                   selectedPreset === 'custom'
                     ? 'border-primary bg-primary/10 text-primary'
-                    : 'border-border bg-bg-elevated text-text-secondary hover:border-border-hover'
+                    : 'border-white/[0.06] bg-card text-text-secondary hover:border-white/[0.12]'
                 )}
               >
                 Custom
@@ -220,7 +220,7 @@ export default function PomodoroPage() {
               <Zap size={16} className="text-accent" />
               <h3 className="text-sm font-semibold text-text">XP Earned Today</h3>
             </div>
-            <p className="text-2xl font-bold text-accent">
+            <p className="text-2xl font-display font-bold text-accent">
               {todaySessions.filter(s => s.completed).length * 15} XP
             </p>
           </Card>
@@ -238,7 +238,7 @@ export default function PomodoroPage() {
                     type: 'UPDATE_SETTINGS',
                     payload: { pomodoro: { ...state.settings.pomodoro, autoBreak: e.target.checked } }
                   })}
-                  className="w-4 h-4 rounded border-border bg-bg-elevated text-primary focus:ring-primary/30"
+                  className="w-4 h-4 rounded border-white/[0.06] bg-card text-primary focus:ring-primary/[0.3]"
                 />
               </label>
               <label className="flex items-center justify-between">
@@ -250,7 +250,7 @@ export default function PomodoroPage() {
                     type: 'UPDATE_SETTINGS',
                     payload: { pomodoro: { ...state.settings.pomodoro, autoFocus: e.target.checked } }
                   })}
-                  className="w-4 h-4 rounded border-border bg-bg-elevated text-primary focus:ring-primary/30"
+                  className="w-4 h-4 rounded border-white/[0.06] bg-card text-primary focus:ring-primary/[0.3]"
                 />
               </label>
               <label className="flex items-center justify-between">
@@ -262,7 +262,7 @@ export default function PomodoroPage() {
                     type: 'UPDATE_SETTINGS',
                     payload: { pomodoro: { ...state.settings.pomodoro, tickingSound: e.target.checked } }
                   })}
-                  className="w-4 h-4 rounded border-border bg-bg-elevated text-primary focus:ring-primary/30"
+                  className="w-4 h-4 rounded border-white/[0.06] bg-card text-primary focus:ring-primary/[0.3]"
                 />
               </label>
             </div>

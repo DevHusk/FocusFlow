@@ -21,8 +21,8 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
           <select
             ref={ref}
             className={cn(
-              'w-full h-10 px-3 pr-10 bg-bg-elevated border border-border rounded-xl text-sm text-text',
-              'focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/50',
+              'w-full h-10 px-3 pr-10 glass-light rounded-xl text-sm text-text',
+              'focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/[0.15]',
               'transition-all duration-200 appearance-none',
               error && 'border-danger focus:ring-danger/30',
               className
@@ -30,7 +30,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
             {...props}
           >
             {options.map(opt => (
-              <option key={opt.value} value={opt.value} className="bg-bg-card text-text">
+              <option key={opt.value} value={opt.value} className="bg-bg-solid text-text">
                 {opt.label}
               </option>
             ))}

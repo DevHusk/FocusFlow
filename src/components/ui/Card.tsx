@@ -13,8 +13,8 @@ export default function Card({ children, className, hover = false, padding = 'md
     <div
       onClick={onClick}
       className={cn(
-        'bg-bg-card border border-border rounded-2xl',
-        hover && 'transition-all duration-200 hover:border-border-hover hover:shadow-card-hover cursor-pointer',
+        'glass-card rounded-2xl',
+        hover && 'transition-all duration-200 hover:border-white/[0.12] hover:shadow-card-hover cursor-pointer',
         padding === 'none' && '',
         padding === 'sm' && 'p-3',
         padding === 'md' && 'p-4 sm:p-5',

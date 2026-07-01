@@ -78,7 +78,7 @@ export default function SettingsPage() {
   return (
     <div className="max-w-3xl mx-auto space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-text">Settings</h1>
+        <h1 className="text-2xl font-display font-bold text-text">Settings</h1>
         <p className="text-sm text-text-secondary mt-1">Customize your study experience</p>
       </div>
 
@@ -111,7 +111,7 @@ export default function SettingsPage() {
               <button className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-primary/10 border border-primary text-primary text-sm font-medium">
                 <Moon size={16} /> Dark
               </button>
-              <button className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-bg-elevated border border-border text-text-secondary text-sm font-medium" disabled>
+              <button className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-card border border-white/[0.06] text-text-secondary text-sm font-medium" disabled>
                 <Sun size={16} /> Light (Coming Soon)
               </button>
             </div>
@@ -143,19 +143,19 @@ export default function SettingsPage() {
                 <label className="block text-sm font-medium text-text-secondary mb-1">Focus (min)</label>
                 <input type="number" value={settings.pomodoro.focusMinutes} min={1} max={180}
                   onChange={e => dispatch({ type: 'UPDATE_SETTINGS', payload: { pomodoro: { ...settings.pomodoro, focusMinutes: Number(e.target.value) } } })}
-                  className="w-full h-10 px-3 bg-bg-elevated border border-border rounded-xl text-sm text-text focus:outline-none focus:ring-2 focus:ring-primary/30" />
+                  className="w-full h-10 px-3 bg-card border border-white/[0.06] rounded-xl text-sm text-text focus:outline-none focus:ring-2 focus:ring-primary/[0.3]" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-text-secondary mb-1">Short Break</label>
                 <input type="number" value={settings.pomodoro.shortBreakMinutes} min={1} max={60}
                   onChange={e => dispatch({ type: 'UPDATE_SETTINGS', payload: { pomodoro: { ...settings.pomodoro, shortBreakMinutes: Number(e.target.value) } } })}
-                  className="w-full h-10 px-3 bg-bg-elevated border border-border rounded-xl text-sm text-text focus:outline-none focus:ring-2 focus:ring-primary/30" />
+                  className="w-full h-10 px-3 bg-card border border-white/[0.06] rounded-xl text-sm text-text focus:outline-none focus:ring-2 focus:ring-primary/[0.3]" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-text-secondary mb-1">Long Break</label>
                 <input type="number" value={settings.pomodoro.longBreakMinutes} min={1} max={60}
                   onChange={e => dispatch({ type: 'UPDATE_SETTINGS', payload: { pomodoro: { ...settings.pomodoro, longBreakMinutes: Number(e.target.value) } } })}
-                  className="w-full h-10 px-3 bg-bg-elevated border border-border rounded-xl text-sm text-text focus:outline-none focus:ring-2 focus:ring-primary/30" />
+                  className="w-full h-10 px-3 bg-card border border-white/[0.06] rounded-xl text-sm text-text focus:outline-none focus:ring-2 focus:ring-primary/[0.3]" />
               </div>
             </div>
           )}
@@ -163,13 +163,13 @@ export default function SettingsPage() {
             <span className="text-sm text-text-secondary">Auto start breaks</span>
             <input type="checkbox" checked={settings.pomodoro.autoBreak}
               onChange={e => dispatch({ type: 'UPDATE_SETTINGS', payload: { pomodoro: { ...settings.pomodoro, autoBreak: e.target.checked } } })}
-              className="w-4 h-4 rounded border-border bg-bg-elevated text-primary focus:ring-primary/30" />
+              className="w-4 h-4 rounded border-white/[0.06] bg-card text-primary focus:ring-primary/[0.3]" />
           </div>
           <div className="flex items-center justify-between">
             <span className="text-sm text-text-secondary">Auto start focus sessions</span>
             <input type="checkbox" checked={settings.pomodoro.autoFocus}
               onChange={e => dispatch({ type: 'UPDATE_SETTINGS', payload: { pomodoro: { ...settings.pomodoro, autoFocus: e.target.checked } } })}
-              className="w-4 h-4 rounded border-border bg-bg-elevated text-primary focus:ring-primary/30" />
+              className="w-4 h-4 rounded border-white/[0.06] bg-card text-primary focus:ring-primary/[0.3]" />
           </div>
         </div>
       </Card>
@@ -185,13 +185,13 @@ export default function SettingsPage() {
             <span className="text-sm text-text-secondary">Enable notifications</span>
             <input type="checkbox" checked={settings.notifications}
               onChange={e => dispatch({ type: 'UPDATE_SETTINGS', payload: { notifications: e.target.checked } })}
-              className="w-4 h-4 rounded border-border bg-bg-elevated text-primary focus:ring-primary/30" />
+              className="w-4 h-4 rounded border-white/[0.06] bg-card text-primary focus:ring-primary/[0.3]" />
           </div>
           <div className="flex items-center justify-between">
             <span className="text-sm text-text-secondary">Timer sounds</span>
             <input type="checkbox" checked={settings.sound}
               onChange={e => dispatch({ type: 'UPDATE_SETTINGS', payload: { sound: e.target.checked } })}
-              className="w-4 h-4 rounded border-border bg-bg-elevated text-primary focus:ring-primary/30" />
+              className="w-4 h-4 rounded border-white/[0.06] bg-card text-primary focus:ring-primary/[0.3]" />
           </div>
         </div>
       </Card>
@@ -211,9 +211,9 @@ export default function SettingsPage() {
             { keys: 'Ctrl + K', action: 'Command palette' },
             { keys: 'Esc', action: 'Exit focus / close modal' },
           ].map(shortcut => (
-            <div key={shortcut.keys} className="flex items-center justify-between py-2 px-3 rounded-lg bg-bg-elevated">
+            <div key={shortcut.keys} className="flex items-center justify-between py-2 px-3 rounded-lg bg-card">
               <span className="text-sm text-text-secondary">{shortcut.action}</span>
-              <kbd className="px-2 py-0.5 rounded bg-bg-hover text-xs text-text-tertiary border border-border">{shortcut.keys}</kbd>
+              <kbd className="px-2 py-0.5 rounded bg-card text-xs text-text-tertiary border border-white/[0.06]">{shortcut.keys}</kbd>
             </div>
           ))}
         </div>

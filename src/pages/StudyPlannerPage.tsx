@@ -155,7 +155,7 @@ export default function StudyPlannerPage() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-text">Study Planner</h1>
+          <h1 className="text-2xl font-display font-bold text-text">Study Planner</h1>
           <p className="text-sm text-text-secondary mt-1">Organize your subjects, topics, and deadlines</p>
         </div>
         <Button onClick={() => { setEditingSubject(null); setSubjectName(''); setShowSubjectModal(true); }}>
@@ -219,7 +219,7 @@ export default function StudyPlannerPage() {
                       exit={{ height: 0, opacity: 0 }}
                       className="overflow-hidden"
                     >
-                      <div className="mt-4 pt-4 border-t border-border">
+                      <div className="mt-4 pt-4 border-t border-white/[0.06]">
                         <ProgressBar value={subject.completedHours} max={subject.targetHours} color={subject.color} showLabel />
 
                         {/* Topics */}
@@ -235,7 +235,7 @@ export default function StudyPlannerPage() {
                           ) : (
                             <div className="space-y-1">
                               {subject.topics.map(topic => (
-                                <div key={topic.id} className="flex items-center gap-2 py-1.5 px-2 rounded-lg hover:bg-bg-elevated transition-colors">
+                                <div key={topic.id} className="flex items-center gap-2 py-1.5 px-2 rounded-lg hover:bg-card transition-colors">
                                   <button
                                     onClick={() => toggleTopic(subject.id, topic.id)}
                                     className={cn('w-5 h-5 rounded-md border-2 flex items-center justify-center transition-all',
@@ -266,7 +266,7 @@ export default function StudyPlannerPage() {
                           ) : (
                             <div className="space-y-1">
                               {subject.deadlines.map(dl => (
-                                <div key={dl.id} className="flex items-center gap-2 py-1.5 px-2 rounded-lg hover:bg-bg-elevated">
+                                <div key={dl.id} className="flex items-center gap-2 py-1.5 px-2 rounded-lg hover:bg-card">
                                   <Calendar size={12} style={{ color: subject.color }} />
                                   <span className="text-sm text-text flex-1">{dl.title}</span>
                                   <span className="text-xs text-text-tertiary">{new Date(dl.date).toLocaleDateString()}</span>

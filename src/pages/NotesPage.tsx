@@ -124,7 +124,7 @@ export default function NotesPage() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-text">Notes</h1>
+          <h1 className="text-2xl font-display font-bold text-text">Notes</h1>
           <p className="text-sm text-text-secondary mt-1">{state.notes.length} notes</p>
         </div>
         <div className="flex gap-2">
@@ -143,7 +143,7 @@ export default function NotesPage() {
           <h3 className="text-xs font-semibold text-text-tertiary uppercase tracking-wider mb-2 px-2">Folders</h3>
           <button
             onClick={() => setSelectedFolder(null)}
-            className={cn('w-full text-left px-3 py-2 rounded-xl text-sm transition-colors', !selectedFolder ? 'bg-primary/10 text-primary' : 'text-text-secondary hover:bg-bg-elevated')}
+            className={cn('w-full text-left px-3 py-2 rounded-xl text-sm transition-colors', !selectedFolder ? 'bg-primary/10 text-primary' : 'text-text-secondary hover:bg-card')}
           >
             All Notes
           </button>
@@ -152,7 +152,7 @@ export default function NotesPage() {
               key={folder.id}
               onClick={() => setSelectedFolder(folder.id)}
               className={cn('w-full text-left px-3 py-2 rounded-xl text-sm transition-colors flex items-center gap-2',
-                selectedFolder === folder.id ? 'bg-primary/10 text-primary' : 'text-text-secondary hover:bg-bg-elevated'
+                selectedFolder === folder.id ? 'bg-primary/10 text-primary' : 'text-text-secondary hover:bg-card'
               )}
             >
               <Folder size={14} />
@@ -169,7 +169,7 @@ export default function NotesPage() {
                     key={tag}
                     onClick={() => setSelectedTag(selectedTag === tag ? null : tag)}
                     className={cn('px-2 py-0.5 rounded-lg text-xs transition-colors',
-                      selectedTag === tag ? 'bg-primary text-white' : 'bg-bg-elevated text-text-secondary hover:bg-bg-hover'
+                      selectedTag === tag ? 'bg-primary text-white' : 'bg-card text-text-secondary hover:bg-card'
                     )}
                   >
                     {tag}
@@ -217,11 +217,11 @@ export default function NotesPage() {
                       {note.tags.length > 0 && (
                         <div className="flex flex-wrap gap-1 mb-2">
                           {note.tags.slice(0, 3).map(tag => (
-                            <span key={tag} className="px-1.5 py-0.5 rounded bg-bg-elevated text-xs text-text-muted">{tag}</span>
+                            <span key={tag} className="px-1.5 py-0.5 rounded bg-card text-xs text-text-muted">{tag}</span>
                           ))}
                         </div>
                       )}
-                      <div className="flex items-center justify-between pt-2 border-t border-border">
+                      <div className="flex items-center justify-between pt-2 border-t border-white/[0.06]">
                         <span className="text-xs text-text-muted">
                           {new Date(note.updatedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
                         </span>
@@ -252,7 +252,7 @@ export default function NotesPage() {
               onChange={(e) => setNoteContent(e.target.value)}
               placeholder="Write your note here... Supports **bold**, *italic*, `code`, and ```code blocks```"
               rows={10}
-              className="w-full px-4 py-3 bg-bg-elevated border border-border rounded-xl text-sm text-text placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all resize-none font-mono"
+              className="w-full px-4 py-3 bg-card border border-white/[0.06] rounded-xl text-sm text-text placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-primary/[0.3] focus:border-primary/[0.15] transition-all resize-none font-mono"
             />
           </div>
           <div>
@@ -271,7 +271,7 @@ export default function NotesPage() {
             </div>
           </div>
           <label className="flex items-center gap-2 cursor-pointer">
-            <input type="checkbox" checked={notePinned} onChange={(e) => setNotePinned(e.target.checked)} className="w-4 h-4 rounded border-border bg-bg-elevated text-primary focus:ring-primary/30" />
+            <input type="checkbox" checked={notePinned} onChange={(e) => setNotePinned(e.target.checked)} className="w-4 h-4 rounded border-white/[0.06] bg-card text-primary focus:ring-primary/[0.3]" />
             <Pin size={14} className="text-text-secondary" />
             <span className="text-sm text-text-secondary">Pin this note</span>
           </label>

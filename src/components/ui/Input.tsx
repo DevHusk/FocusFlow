@@ -25,9 +25,9 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           <input
             ref={ref}
             className={cn(
-              'w-full h-10 px-3 bg-bg-elevated border border-border rounded-xl text-sm text-text',
+              'w-full h-10 px-3 glass-light rounded-xl text-sm text-text',
               'placeholder:text-text-muted',
-              'focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/50',
+              'focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/[0.15]',
               'transition-all duration-200',
               icon && 'pl-10',
               error && 'border-danger focus:ring-danger/30',

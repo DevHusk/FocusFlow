@@ -42,7 +42,7 @@ export default function QuotesPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-text">Quotes</h1>
+        <h1 className="text-2xl font-display font-bold text-text">Quotes</h1>
         <p className="text-sm text-text-secondary mt-1">Daily inspiration to keep you motivated</p>
       </div>
 
@@ -82,12 +82,12 @@ export default function QuotesPage() {
       <div className="flex items-center gap-2">
         <button onClick={() => setFilter('all')}
           className={cn('px-3 py-1.5 rounded-xl text-sm font-medium transition-all',
-            filter === 'all' ? 'bg-primary text-white' : 'bg-bg-card text-text-secondary border border-border hover:text-text')}>
+            filter === 'all' ? 'bg-primary text-white' : 'bg-card text-text-secondary border border-white/[0.06] hover:text-text')}>
           All Quotes
         </button>
         <button onClick={() => setFilter('favorites')}
           className={cn('px-3 py-1.5 rounded-xl text-sm font-medium transition-all flex items-center gap-1',
-            filter === 'favorites' ? 'bg-danger text-white' : 'bg-bg-card text-text-secondary border border-border hover:text-text')}>
+            filter === 'favorites' ? 'bg-danger text-white' : 'bg-card text-text-secondary border border-white/[0.06] hover:text-text')}>
           <Heart size={12} /> Favorites
         </button>
       </div>
@@ -106,15 +106,15 @@ export default function QuotesPage() {
                 <Quote size={20} className="text-primary/30 mb-2" />
                 <p className="text-sm text-text-secondary italic leading-relaxed">"{quote.text}"</p>
               </div>
-              <div className="flex items-center justify-between mt-4 pt-3 border-t border-border">
+              <div className="flex items-center justify-between mt-4 pt-3 border-t border-white/[0.06]">
                 <span className="text-xs text-text-tertiary">— {quote.author}</span>
                 <div className="flex items-center gap-1">
                   <button onClick={() => copyQuote(quote.text)}
-                    className="p-1.5 rounded-lg hover:bg-bg-elevated text-text-muted hover:text-text-secondary transition-colors">
+                    className="p-1.5 rounded-lg hover:bg-card text-text-muted hover:text-text-secondary transition-colors">
                     <Copy size={12} />
                   </button>
                   <button onClick={() => toggleFavorite(quote.id)}
-                    className="p-1.5 rounded-lg hover:bg-bg-elevated text-text-muted hover:text-danger transition-colors">
+                    className="p-1.5 rounded-lg hover:bg-card text-text-muted hover:text-danger transition-colors">
                     <Heart size={12} className={cn(quote.favorite && 'fill-danger text-danger')} />
                   </button>
                 </div>

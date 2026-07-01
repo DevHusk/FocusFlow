@@ -114,10 +114,10 @@ export default function GoalsPage() {
   };
 
   const goalTypeColors: Record<GoalType, string> = {
-    daily: '#4F8CFF',
-    weekly: '#7C5CFF',
-    monthly: '#22C55E',
-    'long-term': '#F59E0B',
+    daily: '#00E5C7',
+    weekly: '#D946EF',
+    monthly: '#34D399',
+    'long-term': '#FBBF24',
   };
 
   const goalTypeLabels: Record<GoalType, string> = {
@@ -131,7 +131,7 @@ export default function GoalsPage() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-text">Goals</h1>
+          <h1 className="text-2xl font-display font-bold text-text">Goals</h1>
           <p className="text-sm text-text-secondary mt-1">{completedGoals}/{totalGoals} goals completed</p>
         </div>
         <Button onClick={() => { resetForm(); setShowModal(true); }}>
@@ -151,7 +151,7 @@ export default function GoalsPage() {
                   <Trophy size={20} style={{ color: goalTypeColors[type] }} />
                 </div>
                 <div>
-                  <p className="text-lg font-bold text-text">{done}/{count}</p>
+                  <p className="text-lg font-display font-bold text-text">{done}/{count}</p>
                   <p className="text-xs text-text-tertiary">{goalTypeLabels[type]}</p>
                 </div>
               </div>
@@ -165,7 +165,7 @@ export default function GoalsPage() {
         <button
           onClick={() => setSelectedType('all')}
           className={cn('px-3 py-1.5 rounded-xl text-sm font-medium transition-all',
-            selectedType === 'all' ? 'bg-primary text-white' : 'bg-bg-card text-text-secondary hover:text-text border border-border'
+            selectedType === 'all' ? 'bg-primary text-white' : 'bg-card text-text-secondary hover:text-text border border-white/[0.06]'
           )}
         >All</button>
         {(['daily', 'weekly', 'monthly', 'long-term'] as const).map(type => (
@@ -173,7 +173,7 @@ export default function GoalsPage() {
             key={type}
             onClick={() => setSelectedType(selectedType === type ? 'all' : type)}
             className={cn('px-3 py-1.5 rounded-xl text-sm font-medium transition-all',
-              selectedType === type ? 'text-white' : 'bg-bg-card text-text-secondary hover:text-text border border-border'
+              selectedType === type ? 'text-white' : 'bg-card text-text-secondary hover:text-text border border-white/[0.06]'
             )}
             style={selectedType === type ? { backgroundColor: goalTypeColors[type] } : {}}
           >{goalTypeLabels[type]}</button>
@@ -230,7 +230,7 @@ export default function GoalsPage() {
                     </div>
 
                     {isExpanded && (
-                      <div className="mt-4 pt-4 border-t border-border">
+                      <div className="mt-4 pt-4 border-t border-white/[0.06]">
                         {goal.description && <p className="text-sm text-text-secondary mb-3">{goal.description}</p>}
                         <div className="flex items-center gap-4 text-xs text-text-tertiary mb-3">
                           <span>{goal.currentValue} / {goal.targetValue} {goal.unit}</span>
@@ -248,7 +248,7 @@ export default function GoalsPage() {
                           ) : (
                             <div className="space-y-1">
                               {goal.milestones.map(m => (
-                                <div key={m.id} className="flex items-center gap-2 py-1.5 px-2 rounded-lg hover:bg-bg-elevated">
+                                <div key={m.id} className="flex items-center gap-2 py-1.5 px-2 rounded-lg hover:bg-card">
                                   <button
                                     onClick={() => toggleMilestone(goal, m.id)}
                                     className={cn('w-5 h-5 rounded-md border-2 flex items-center justify-center transition-all',
@@ -280,7 +280,7 @@ export default function GoalsPage() {
           <div>
             <label className="block text-sm font-medium text-text-secondary mb-1.5">Description</label>
             <textarea value={description} onChange={e => setDescription(e.target.value)} placeholder="What do you want to achieve?" rows={3}
-              className="w-full px-3 py-2.5 bg-bg-elevated border border-border rounded-xl text-sm text-text placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-primary/30 resize-none" />
+              className="w-full px-3 py-2.5 bg-card border border-white/[0.06] rounded-xl text-sm text-text placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-primary/[0.3] resize-none" />
           </div>
           <div className="grid grid-cols-2 gap-4">
             <Select label="Type" value={goalType} onChange={e => setGoalType(e.target.value as GoalType)}

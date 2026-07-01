@@ -18,11 +18,11 @@ interface SoundOption {
 }
 
 const sounds: SoundOption[] = [
-  { id: 'rain', label: 'Rain', icon: CloudRain, color: '#4F8CFF', description: 'Gentle rainfall for deep focus' },
-  { id: 'forest', label: 'Forest', icon: Trees, color: '#22C55E', description: 'Birds and rustling leaves' },
-  { id: 'cafe', label: 'Café', icon: Coffee, color: '#F59E0B', description: 'Ambient café chatter' },
-  { id: 'brown-noise', label: 'Brown Noise', icon: Waves, color: '#7C5CFF', description: 'Deep, low-frequency hum' },
-  { id: 'white-noise', label: 'White Noise', icon: Radio, color: '#EC4899', description: 'Consistent static noise' },
+  { id: 'rain', label: 'Rain', icon: CloudRain, color: '#00E5C7', description: 'Gentle rainfall for deep focus' },
+  { id: 'forest', label: 'Forest', icon: Trees, color: '#34D399', description: 'Birds and rustling leaves' },
+  { id: 'cafe', label: 'Café', icon: Coffee, color: '#FBBF24', description: 'Ambient café chatter' },
+  { id: 'brown-noise', label: 'Brown Noise', icon: Waves, color: '#D946EF', description: 'Deep, low-frequency hum' },
+  { id: 'white-noise', label: 'White Noise', icon: Radio, color: '#D946EF', description: 'Consistent static noise' },
   { id: 'nature', label: 'Nature', icon: Leaf, color: '#14B8A6', description: 'Streams and wind' },
 ];
 
@@ -51,7 +51,7 @@ export default function MusicPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-text">Focus Music</h1>
+        <h1 className="text-2xl font-display font-bold text-text">Focus Music</h1>
         <p className="text-sm text-text-secondary mt-1">Ambient sounds to help you concentrate</p>
       </div>
 
@@ -88,7 +88,7 @@ export default function MusicPage() {
           </div>
 
           {/* Volume */}
-          <div className="flex items-center gap-3 mt-4 pt-4 border-t border-border/50">
+          <div className="flex items-center gap-3 mt-4 pt-4 border-t border-white/[0.06]/50">
             {volume === 0 ? <VolumeX size={16} className="text-text-tertiary" /> : <Volume2 size={16} className="text-text-tertiary" />}
             <input
               type="range"
@@ -96,7 +96,7 @@ export default function MusicPage() {
               max={100}
               value={volume}
               onChange={e => setVolume(Number(e.target.value))}
-              className="flex-1 h-1.5 bg-bg-elevated rounded-full appearance-none cursor-pointer
+              className="flex-1 h-1.5 bg-card rounded-full appearance-none cursor-pointer
                 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4
                 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary [&::-webkit-slider-thumb]:cursor-pointer
                 [&::-webkit-slider-thumb]:shadow-glow"
@@ -142,7 +142,7 @@ export default function MusicPage() {
                   </div>
                   <div className={cn(
                     'w-10 h-10 rounded-xl flex items-center justify-center transition-all',
-                    isActive ? 'bg-primary text-white' : 'bg-bg-elevated text-text-secondary hover:bg-bg-hover'
+                    isActive ? 'bg-primary text-white' : 'bg-card text-text-secondary hover:bg-card'
                   )}>
                     {isActive && isPlaying ? <Pause size={18} /> : <Play size={18} />}
                   </div>
@@ -154,7 +154,7 @@ export default function MusicPage() {
       </div>
 
       {/* Tips */}
-      <Card className="bg-bg-elevated">
+      <Card className="bg-card">
         <h3 className="text-sm font-semibold text-text mb-2">Study Tips</h3>
         <div className="grid sm:grid-cols-3 gap-3 text-xs text-text-secondary">
           <p>Rain and brown noise are great for deep focus work.</p>

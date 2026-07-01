@@ -96,10 +96,10 @@ export default function CommandPalette() {
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: -10 }}
         transition={{ duration: 0.15 }}
-        className="relative w-full max-w-lg bg-bg-card border border-border rounded-2xl shadow-modal overflow-hidden"
+        className="relative w-full max-w-lg glass-card rounded-2xl shadow-modal overflow-hidden"
       >
         {/* Search input */}
-        <div className="flex items-center gap-3 px-4 h-14 border-b border-border">
+        <div className="flex items-center gap-3 px-4 h-14 border-b border-white/[0.04]">
           <Search size={18} className="text-text-tertiary shrink-0" />
           <input
             ref={inputRef}
@@ -109,7 +109,7 @@ export default function CommandPalette() {
             placeholder="Type a command..."
             className="flex-1 bg-transparent text-sm text-text placeholder:text-text-muted outline-none"
           />
-          <kbd className="px-1.5 py-0.5 rounded bg-bg-elevated text-xs text-text-muted border border-border">ESC</kbd>
+          <kbd className="px-1.5 py-0.5 rounded-md glass-light text-xs text-text-muted font-mono">ESC</kbd>
         </div>
 
         {/* Results */}
@@ -131,14 +131,14 @@ export default function CommandPalette() {
                       className={cn(
                         'w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors',
                         idx === selectedIndex
-                          ? 'bg-primary/10 text-primary'
-                          : 'text-text-secondary hover:bg-bg-elevated'
+                          ? 'bg-primary/[0.1] text-primary'
+                          : 'text-text-secondary hover:bg-white/[0.04]'
                       )}
                     >
                       {cmd.icon}
                       <span className="flex-1 text-left">{cmd.label}</span>
                       {cmd.shortcut && (
-                        <kbd className="px-1.5 py-0.5 rounded bg-bg-elevated text-xs text-text-muted border border-border">
+                        <kbd className="px-1.5 py-0.5 rounded-md glass-light text-xs text-text-muted font-mono">
                           {cmd.shortcut}
                         </kbd>
                       )}
